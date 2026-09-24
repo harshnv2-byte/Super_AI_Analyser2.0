@@ -11,11 +11,8 @@ jobs:
           java-version: '17'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
-      - name: Make gradlew executable
-        run: chmod +x./gradlew || echo "no gradlew"
-      - name: Build with Gradle
-        run: |
-          if [ -f./gradlew ]; then./gradlew assembleDebug; else gradle assembleDebug; fi
+      - name: Build APK
+        run: gradle assembleDebug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
